@@ -10,6 +10,15 @@
                 {{-- header buttons --}}
                 <nav class="m-header-right">
 
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+
+                        <x-dropdown-link :href="route('logout')"
+                                onclick="event.preventDefault();
+                                            this.closest('form').submit();">
+                            {{ __('Log Out') }}
+                        </x-dropdown-link>
+                    </form>
                     <a href="#"><i class="fas fa-users group-btn"></i></a>
 
                     <a href="#"><i class="fas fa-cog settings-btn"></i></a>
@@ -31,7 +40,7 @@
             <div class="show messenger-tab users-tab app-scroll" data-view="users">
                 {{-- Favorites --}}
                 <div class="favorites-section">
-                    <p class="messenger-title"><span>Favorites</span></p>
+                    <p class="messenger-title"><span>Favorites 123</span></p>
                     <div class="messenger-favorites app-scroll-hidden"></div>
                 </div>
                 {{-- Saved Messages --}}
@@ -39,7 +48,7 @@
                 {!! view('Chatify::layouts.listItem', ['get' => 'saved']) !!}
                 {{-- Contact --}}
                 <p class="messenger-title"><span>All Messages</span></p>
-                <div class="listOfContacts" style="width: 100%;height: calc(100% - 272px);position: relative;"></div>
+                <div class="listOfContacts" class="listOfContacts" style="width: 100%;height: calc(100% - 272px);position: relative;"></div>
             </div>
             {{-- ---------------- [ Search Tab ] ---------------- --}}
             <div class="messenger-tab search-tab app-scroll" data-view="search">

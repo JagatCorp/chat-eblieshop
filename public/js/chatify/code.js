@@ -909,15 +909,19 @@ function setContactsLoading(loading = false) {
     }
     contactsLoading = loading;
 }
+
+// asli
 function getContacts() {
+    console.log('masuk12');
     if (!contactsLoading && !noMoreContacts) {
         setContactsLoading(true);
         $.ajax({
             url: url + "/getContacts",
             method: "GET",
-            data: { _token: csrfToken, page: contactsPage },
+            // data: { _token: csrfToken, page: contactsPage },
             dataType: "JSON",
             success: (data) => {
+                console.log(data);
                 setContactsLoading(false);
                 if (contactsPage < 2) {
                     $(".listOfContacts").html(data.contacts);
@@ -935,6 +939,7 @@ function getContacts() {
             error: (error) => {
                 setContactsLoading(false);
                 console.error(error);
+                console.log('Cara mengetahui error:', error); // Menampilkan pesan error ke konsol
             },
         });
     }

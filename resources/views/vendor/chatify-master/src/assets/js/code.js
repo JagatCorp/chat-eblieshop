@@ -889,9 +889,11 @@ function getContacts() {
     $.ajax({
       url: url + "/getContacts",
       method: "GET",
-      data: { _token: csrfToken, page: contactsPage },
+    //   data: { _token: csrfToken, page: contactsPage },
+      data: { page: contactsPage },
       dataType: "JSON",
       success: (data) => {
+        console.log(data);
         setContactsLoading(false);
         if (contactsPage < 2) {
           $(".listOfContacts").html(data.contacts);
